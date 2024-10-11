@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/gri"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link href="./assets/css/cart.css">
+</head>
+<body>
+    <!-- Header + Navigation -->
+    <header class="header">
+        <div class="header-wrap ">
+            <div class="logo">
+                <a href="index.html" class="logo-wrap">
+                    <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
+                        width="157" height="36">
+                </a>
+            </div>
+            <div class="navigation-wraper">
+                <nav class="header-navbar">
+                    <ul class="navigation-wraper-horizontal">
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Sản Phẩm</span>
+                            </a>
+                        </li>
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Khuyến mãi</span>
+                            </a>
+                        </li>
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Dịch vụ</span>
+                            </a>
+                        </li>
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Tư vấn khách hàng</span>
+                            </a>
+                        </li>
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Hệ thống cửa hàng</span>
+                            </a>
+                        </li>
+                        <li class="menu-item list-group-item">
+                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                                <span>Liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="icon-header">
+                    <span class=" header-icon">
+                        <button class="header-icon-button js-find-button"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </span>
+                    <!-- User Layout -->
+                    <div class="header__account">
+                        <div class="header__account-wrap">
+                            <i class="fa-solid fa-thin fa-user"></i>
+                            <div class="header__acount-list">
+                                <a href="authenform.html" class="acount" title="Đăng nhập">Đăng nhập</a>
+                                <a href="authenform.html" class="acount" title="Đăng kí">Đăng kí</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cart layout -->
+                    <div class="header__cart">
+                        <a href="cart.html" class="header__cart-link">
+                            <div class="header__cart-wrap">
+                                <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                                <span class="count-item count-item-pr">0</span>
+
+                                <div class="header__cart-list"><!--header__cart-list--no-cart-->
+                                    <ul class="product-list">
+                                        <li>
+                                            <a href="" class="header__cart-list-img">
+                                                <img width="77" height="77" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWETzPoTwqVoCVm1lp-ZVDOKs74NZJRJrf4w&s">
+                                            </a>
+                                            <a href="" class="header__cart-list-name">
+                                                <span>Bánh Donut</span>
+                                            </a>
+                                            <div class="product-remove"><a href="">x</a></div>
+                                        </li>
+                                        <!-- Thêm các mục sản phẩm khác nếu cần -->
+                                    </ul>
+                                </div>
+                                
+                                
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="app__container">
+        
+    </div>
+    <footer class="footer">
+        <div class="mid-footer">
+            <div class="grid-2">
+                <div class="grid__row">
+                    <div class="grid__column-9">
+                        <div class="footer-block">
+                            <a href="#" class="footer-link">
+                                <img src="https://theme.hstatic.net/200000833741/1001197874/14/logo-footer.png?v=2"
+                                    alt="" width="245" height="60">
+                            </a>
+                            <div class="single-contact">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div class="content">
+                                    Địa chỉ:
+                                    <span>150/8 Nguyễn Duy Cung, Phường 12, Tp.HCM</span>
+                                </div>
+                            </div>
+                            <div class="single-contact">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <div class="content">
+                                    Số điện thoại:
+                                    <span>0845663357</span>
+                                </div>
+                            </div>
+                            <div class="single-contact">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div class="content">
+                                    Email:
+                                    <span>lecongtuan472004@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__column-9">
+                        <div class="footer-block">
+                            <h3 class="footer-title">
+                                Hỗ trợ khách hàng
+                            </h3>
+                            <ul class="list-menu">
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Tìm kiếm</a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Tin tức</a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Hướng dẫn làm bánh</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="grid__column-9">
+                        <div class="footer-block">
+                            <h3 class="footer-title">
+                                Chính sách
+                            </h3>
+                            <ul class="list-menu">
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Chính sách bán hàng</a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Chính sách đổi trả hàng</a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="list-item-link">Chính sách giao hàng</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid__column-9">
+                        <div class="footer-block">
+                            <h3 class="footer-title">
+                                Fanpage
+                            </h3>
+                            <ul class="list-menu">
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </footer>
+    <div class="modal">
+        <div class="modal__overlay"></div>
+
+        <div class="modal__body js-modal__body" id="search__btn">
+            <div class="modal__inner">
+                <div class="header-wrap-1 ">
+                    <div class="logo">
+                        <a href="index.html" class="logo-wrap">
+                            <img class="img-fluid"
+                                src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2" width="157"
+                                height="36">
+                        </a>
+                    </div>
+                    <div class="header-search">
+                        <input type="text" class="header-search-input" placeholder="Bạn muốn tìm cái gì ?">
+                        <button class="header-search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                    <div class="header-right">
+                        <div class="icon-header">
+                            <span class=" header-icon">
+                                <a class="header-icon-link js-header-icon-link"><i
+                                        class="fa-solid fa-magnifying-glass"></i></a>
+                            </span>
+                            <!-- User Layout -->
+                            <div class="header__account">
+                                <div class="header__account-wrap">
+                                    <i class="fa-solid fa-thin fa-user"></i>
+                                    <div class="header__acount-list">
+                                        <a href="authenform.html" class="acount" title="Đăng nhập">Đăng nhập</a>
+                                        <a href="authenform.html" class="acount" title="Đăng kí">Đăng kí</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Cart layout -->
+                            <div class="header__cart">
+                                <a href="cart.html" class="header__cart-link">
+                                    <div class="header__cart-wrap">
+                                        <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                                        <span class="count-item count-item-pr">0</span>
+                                        <div class="header__cart-list header__cart-list--no-cart">
+                                            <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/indexx.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"
+        integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/slickSlider.js"></script>
+    <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/ConvertPrice.js"></script>
+</body>
+
+</html>

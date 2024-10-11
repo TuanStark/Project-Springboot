@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admin/fragments/header :: header"></div>
+    <!-- =============================================== -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Blank page
+                <small>it all starts here</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Examples</a></li>
+                <li class="active">Blank page</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Cập nhật danh mục</h3>
+                    </div>
+                    <form th:action="@{/admin/category/edit/{id}(id=${category.id})}" method="post">
+                        <input type="hidden" th:value="${category.id}" name="id"/>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label th:for="name">Tên danh mục</label>
+                                <input type="text" id="name" name="name" th:value="${category.name}" placeholder="Tên danh mục" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="image">Hình ảnh</label>
+                                <input type="text" id="image" name="image" th:value="${category.image}" placeholder="Link hình ảnh" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a th:href="@{/admin/category}" class="btn btn-danger">Quay lại</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <div th:replace="admin/fragments/footer :: footer"></div>
+</div>
+<!-- ./wrapper -->
+
+
+<div th:replace="admin/fragments/script :: script"></div>
+</body>
+</html>

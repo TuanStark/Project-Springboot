@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid;
+}
+body{
+    height: 100vh;
+    background: #dadada;
+}
+.container{
+    width: 80%;
+    height: 80%;
+    margin: 50px auto;
+}
+.main{
+    height: 80%;
+    margin-bottom: 20px;
+    position: relative;
+}
+.list-image{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.list-image div{
+    flex: 1;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.control{
+    position: absolute;
+    top: 50%;
+    font-size: 70px;
+    color: black;
+    transform: translateY(-50%);
+}
+.prev{
+    left: 10px;
+}
+.next{
+    right: 10px;
+}
+.active{
+    background: rgb(245, 61, 61);
+}
+.product {
+    position: relative;
+    display: inline-block;
+}
+
+.product-image {
+    width: 200px; /* Đặt chiều rộng của ảnh */
+    height: auto; /* Đặt chiều cao tự động để giữ tỉ lệ khung hình */
+}
+
+.icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* Ban đầu ẩn icon */
+    transition: opacity 0.3s ease;
+}
+
+.icons i {
+    font-size: 24px; /* Đặt kích thước của icon */
+    margin: 0 10px; /* Khoảng cách giữa các icon */
+}
+
+.product:hover .icons {
+    opacity: 1; /* Hiển thị icon khi di chuột vào */
+}

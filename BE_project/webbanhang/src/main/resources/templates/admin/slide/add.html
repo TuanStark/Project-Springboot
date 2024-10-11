@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admin/fragments/header :: header"></div>
+    <!-- =============================================== -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Blank page
+                <small>it all starts here</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Examples</a></li>
+                <li class="active">Blank page</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Thêm mới Slide</h3>
+                    </div>
+                    <form th:action="@{/admin/slide/add}" th:object="${slide}" method="post" enctype="multipart/form-data">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputFile">Upload ảnh</label>
+                                <input type="file" name="file" id="exampleInputFile" required />
+                                <p class="help-block">Chọn file ảnh từ máy tính của bạn.</p>
+                            </div>
+                            <!-- Phần để hiển thị ảnh xem trước -->
+                            <div id="imagePreview" style="display:none;">
+                                <h3>Image Preview:</h3>
+                                <img id="outputImage" src="#" alt="Selected Image" style="max-width: 300px;" />
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a th:href="@{/admin/slide}" class="btn btn-danger">Quay lại</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <div th:replace="admin/fragments/footer :: footer"></div>
+</div>
+<!-- ./wrapper -->
+<script>
+    // Hàm xem trước ảnh khi người dùng chọn file
+    function previewImage(event) {
+        var file = event.target.files[0]; // Lấy file được chọn
+        var imagePreview = document.getElementById('imagePreview');
+        var outputImage = document.getElementById('outputImage');
+
+        // Kiểm tra nếu có file được chọn
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                outputImage.src = e.target.result; // Gán kết quả vào src của img
+                imagePreview.style.display = "block"; // Hiển thị khu vực preview
+            }
+
+            reader.readAsDataURL(file); // Đọc file dưới dạng Data URL (base64)
+        } else {
+            imagePreview.style.display = "none"; // Ẩn preview nếu không có file
+        }
+    }
+</script>
+
+<div th:replace="admin/fragments/script :: script"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<div th:fragment="script" xmlns:th="http://www.w3.org/1999/xhtml">
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
+    <script th:src="@{/assets/js/jquery-ui.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/js/adminlte.min.js}"></script>
+    <script th:src="@{/assets/js/dashboard.js}"></script>
+    <script th:src="@{/assets/tinymce/tinymce.min.js}"></script>
+    <script th:src="@{/assets/tinymce/config.js}"></script>
+    <script th:src="@{/assets/js/function.js}"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm("Bạn có muốn xóa bản ghi này không?");
+                debugger
+                if (conf) {
+                    $.ajax({
+                        url: '/Cart/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#checkout-item').html(rs.Count);
+                                $('#trow_' + id).remove();
+                            }
+                        },
+
+                    });
+                }
+            });
+        });
+
+    </script>
+</div>

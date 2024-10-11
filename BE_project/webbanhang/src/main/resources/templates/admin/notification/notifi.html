@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <style>
+        /* Style for the toast notification */
+        .toast {
+            visibility: hidden; /* Hidden by default */
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            right: 30px;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.success {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .toast.error {
+            background-color: #f44336; /* Red */
+        }
+
+        .toast.info {
+            background-color: #2196F3; /* Blue */
+        }
+
+        .toast.show {
+            visibility: visible; /* Show the toast */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Toast Notification Element -->
+<div id="toast" class="toast ${messageType}">
+    ${message}
+</div>
+
+<script>
+    // Function to show the toast notification
+    function showToast() {
+        var toast = document.getElementById("toast");
+        toast.className = "toast " + toast.className.split(" ")[1] + " show";
+        setTimeout(function(){ toast.className = toast.className.replace(" show", ""); }, 3000);
+    }
+
+    // Automatically show the toast when the page loads
+    window.onload = function() {
+        showToast();
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<div class="header-wrap ">
+    <div class="logo">
+        <a href="index.html" class="logo-wrap">
+            <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2" width="157"
+                height="36">
+        </a>
+
+    </div>
+    <div class="navigation-wraper">
+        <nav class="header-navbar">
+            <ul class="navigation-wraper-horizontal">
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Sản Phẩm</span>
+                    </a>
+                </li>
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Khuyến mãi</span>
+                    </a>
+                </li>
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Dịch vụ</span>
+                    </a>
+                </li>
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Tư vấn khách hàng</span>
+                    </a>
+                </li>
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Hệ thống cửa hàng</span>
+                    </a>
+                </li>
+                <li class="menu-item list-group-item">
+                    <a href="#" class="menu-item_link" style="transform: translateY(0%);">
+                        <span>Liên hệ</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header-right">
+        <div class="icon-header">
+            <span class=" header-icon">
+                <button class="header-icon-button js-find-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </span>
+            <!-- User Layout -->
+            <div class="header__account">
+                <div class="header__account-wrap">
+                    <i class="fa-solid fa-thin fa-user"></i>
+                    <div class="header__acount-list">
+                        <a href="#" class="acount" title="Đăng nhập">Profile</a>
+                        <a href="#" class="acount" title="Đăng kí">Setting</a>
+                        <a href="#" class="acount" title="Đăng kí" id="logout">Đăng Xuất</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Cart layout -->
+            <div class="header__cart">
+                <a href="cart.html" class="header__cart-link">
+                    <div class="header__cart-wrap">
+                        <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                        <span class="count-item count-item-pr">0</span>
+
+                        <!--header__cart-list--no-cart-->
+                        <!-- <div class="header__cart-list">
+                            <ul class="product-list">
+                                <li>
+                                    <a href="" class="header__cart-list-img">
+                                        <img width="77" height="77"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWETzPoTwqVoCVm1lp-ZVDOKs74NZJRJrf4w&s">
+                                    </a>
+                                    <a href="" class="header__cart-list-name">
+                                        <span>Bánh Donut</span>
+                                    </a>
+                                    <div class="product-remove"><a href="">x</a></div>
+                                </li>
+                                
+                            </ul>
+                        </div> -->
+
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body js-modal__body" id="search__btn">
+        <div class="modal__inner">
+            <div class="header-wrap-1 ">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
+                            width="157" height="36">
+                    </a>
+                </div>
+                <div class="header-search">
+                    <input type="text" class="header-search-input" placeholder="Bạn muốn tìm cái gì ?">
+                    <button class="header-search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="header-right">
+                    <div class="icon-header">
+                        <span class=" header-icon">
+                            <a class="header-icon-link js-header-icon-link"><i
+                                    class="fa-solid fa-magnifying-glass"></i></a>
+                        </span>
+                        <!-- User Layout -->
+                        <div class="header__account">
+                            <div class="header__account-wrap">
+                                <i class="fa-solid fa-thin fa-user"></i>
+                                <div class="header__acount-list">
+                                    <a href="#" class="acount" title="Đăng nhập">Profile</a>
+                                    <a href="#" class="acount" title="Đăng kí">Setting</a>
+                                    <a href="#" class="acount" title="Đăng kí" id="logout">Đăng Xuất</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Cart layout -->
+                        <div class="header__cart">
+                            <a href="cart.html" class="header__cart-link">
+                                <div class="header__cart-wrap">
+                                    <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                                    <span class="count-item count-item-pr">0</span>
+                                    <div class="header__cart-list header__cart-list--no-cart">
+                                        <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Script>
+        // đăng xuất
+        $('#logout').on('click', function (e) {
+            e.preventDefault();
+            var confirmation = confirm("Bạn có chắc chắn muốn đăng xuất không?");
+            if (confirmation) {
+                var token = localStorage.getItem("token");
+                var request = {
+                    token: token
+                };
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:8881/auth/logout",
+                    contentType: "application/json",
+                    data: JSON.stringify(request),
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        localStorage.removeItem("token");
+                        alert("Bạn đã đăng xuất thành công.");
+                        window.location.href = "/user/authenform.html";
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error("Lỗi đăng xuất:", textStatus, errorThrown);
+                        alert("Có lỗi xảy ra trong quá trình đăng xuất. Vui lòng thử lại.");
+                        localStorage.removeItem("token");
+                        window.location.href = "/user/authenform.html";
+                    }
+                });
+            } else {
+                alert("Đăng xuất đã bị hủy.");
+            }
+        });
+    </Script>
+</div>

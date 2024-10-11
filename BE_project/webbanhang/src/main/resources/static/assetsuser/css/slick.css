@@ -1,0 +1,17 @@
+.slick-next::before,
+.slick-prev::before {
+    color: black;
+    font-size: 40px;
+}
+
+.slick-prev::before {
+    position: absolute;
+    top: 48%;
+    right: -9px;
+}
+
+.slick-next::before {
+    position: absolute;
+    top: 48%;
+    right: -1px;
+}

@@ -1,0 +1,108 @@
+.box-tools .breadcrumb{
+	margin-bottom: 0;
+	padding: 5px;
+	background: none;
+}
+.box-tools .breadcrumb li{
+	margin-right: 15px;
+	float: left
+}
+.box-tools .breadcrumb li a{
+	color: #333
+}
+.content-header > .breadcrumb{
+	padding: 0 7px
+}
+.content .panel-body{
+	padding: 5px
+}
+.table-form .form-inline .input-group>.form-control{
+	width: 300px;
+}
+.panel-pagination .panel-body{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.post-category{
+	padding-left: 0
+}
+.post-category ul{
+	padding-left: 15px
+}
+.btn-social{
+	padding-left: 32px
+}
+.btn-social > :first-child {
+    width: 32px;
+    line-height: 32px;
+    font-size: 16px;
+}
+.table-action a.label{
+	margin-left: 5px
+}
+// css paginate
+/* Container cho phân trang */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Danh sách phân trang */
+.pagination ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+/* Mỗi mục trong phân trang */
+.pagination li {
+    margin: 0 5px;
+}
+
+/* Nút phân trang */
+.pagination a {
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Nút phân trang khi được chọn */
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Nút phân trang khi hover */
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Nút phân trang với class .btn-primary */
+.pagination .btn-primary {
+    display: inline-block;
+    padding: 8px 12px;
+    color: white;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Nút phân trang với class .btn-primary khi hover */
+.pagination .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+

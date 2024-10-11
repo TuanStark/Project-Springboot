@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+<h2>Welcome to Home Page</h2>
+<p>JWT Token:</p>
+<p>${token}</p>
+<button id="refreshTokenBtn">Refresh Token</button>
+
+<script>
+    document.getElementById('refreshTokenBtn').addEventListener('click', function() {
+        fetch('/auth/refresh', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: '${token}'
+            })
+        })
+        .then(response => response.text())
+        .then(newToken => {
+            alert('Token refreshed: ' + newToken);
+        })
+        .catch(error => console.error('Error refreshing token:', error));
+    });
+</script>
+</body>
+</html>

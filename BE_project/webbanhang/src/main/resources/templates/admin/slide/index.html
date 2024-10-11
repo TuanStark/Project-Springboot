@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admin/fragments/header :: header"></div>
+    <!-- =============================================== -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Quản lí Slide
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Examples</a></li>
+                <li class="active">Blank page</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Danh sách Slide</h3>
+
+                            <a class="btn btn-primary" style="margin-left: auto" href="/admin/slide/create">Thêm mới</a>
+                        </div>
+
+                        <div class="box-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div>
+                                </div><div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">STT</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Hình ảnh</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ngày tạo</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr role="row" class="odd" th:each="slide,iterStat  : ${slide}" th:id="'trow_' + ${slide.id}">
+                                    <th scope="row" th:text="${(currentPage - 1) * pageSize + iterStat.index + 1}">1</th>
+                                    <td><img src="/src/main/resources/static/uploads/1726043061168_slider_2_(1).jpg" style="width: 103px"></td>-->
+<!--                                    <td><img th:src="${slide.image}" style="width: 103px"></td>-->
+                                    <td th:text="${slide.createdAt}"></td>
+                                    <td>
+                                        <a th:href="@{/admin/slide/edit/{id}(id=${slide.id})}" class="btn btn-sm btn-primary">Sửa</a>
+                                        <a th:href="@{/admin/slide/delete/{id}(id=${slide.id})}" th:data-id="${slide.id}" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                                </div></div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to <span th:text="${totalPages}">1</span></div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <!-- Phân trang -->
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <!-- Nút 'Previous' -->
+                                                <li class="page-item" th:if="${currentPage > 1}">
+                                                    <a class="page-link" th:href="@{/admin/slide(page=${currentPage-1}, size=${pageSize})}" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                </li>
+                                                <!-- Hiển thị số trang -->
+                                                <li th:each="i : ${#numbers.sequence(1, totalPages)}" class="page-item" th:classappend="${i == currentPage} ? 'active'">
+                                                    <a class="page-link" th:href="@{/admin/slide(page=${i}, size=${pageSize})}" th:text="${i}">1</a>
+                                                </li>
+                                                <!-- Nút 'Next' -->
+                                                <li class="page-item" th:if="${currentPage < totalPages}">
+                                                    <a class="page-link" th:href="@{/admin/slide(page=${currentPage+1}, size=${pageSize})}" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <div th:replace="admin/fragments/footer :: footer"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<div th:replace="admin/fragments/script :: script"></div>
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.btnDelete', function () {
+            var id = $(this).data("id");
+            var conf = confirm("Bạn có chắc chắn muốn xóa bản ghi này không?");
+
+            if (conf) {
+                $.ajax({
+                    url: '/admin/category/delete/' + id, // Đảm bảo URL trỏ đúng đến endpoint
+                    type: 'DELETE', // Phương thức DELETE
+                    success: function (response) {
+                        if (response.success) {
+                            $('#trow_' + id).remove(); // Xóa dòng của category vừa bị xóa
+                        } else {
+                            alert('Có lỗi xảy ra khi xóa bản ghi.');
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra.');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
