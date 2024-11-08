@@ -1,9 +1,10 @@
 package com.stark.webbanhang.api.user.dto.response;
 
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,9 +16,11 @@ import java.util.UUID;
 public class OrderResponse {
      UUID id;
      int status;
+     String OrderId;
      String note;
-     LocalDate orderDate;
+     Date orderDate;
      double totalMoney;
-     int paymentMethods;// chuyển khoản hoặc trả tiền trực tiếp khi nhận hàng
-     String userName;
+     int paymentMethods;
+     UserResponse userID;
+     List<OrderDetailResponse> orderDetails;
 }

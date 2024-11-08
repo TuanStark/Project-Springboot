@@ -1,14 +1,20 @@
 $(document).ready(function () {
+    var token = localStorage.getItem("token");
+    // load lại giỏ hàng
+    //Kiểm tra đăng nhập
+    if (!token) {
+        alert("Bạn cần đăng nhập để truy cập trang này.");
+        window.location.href = '/user/authenform.html';
+    }
+
     function formatCurrency(value) {
         if (isNaN(value)) {
             return '';
         }
-        // Định dạng số với dấu phẩy và thêm ký hiệu ₫
         return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     }
     loadPromotionProducts();
     var link = "http://localhost:8881/admin/slide/all"
-    var token = localStorage.getItem("token");
     var size = 13;
     var limit = 13;
     loadPage(1, size, limit);
@@ -30,7 +36,7 @@ $(document).ready(function () {
                     $.each(msg.data.data, function (index, value) {
                         //console.log("Full response:", JSON.stringify(msg, null, 2));
                         var html = `<li class="categoey-item">
-                                        <a href="products.html?id=${value.id}" class="category-item__link">
+                                        <a href="/user/produtcs/products.html?id=${value.id}" class="category-item__link">
                                             <img class="category-item__link-icon" src="${value.image}"></img>
                                             ${value.name}
                                         </a>
@@ -56,7 +62,6 @@ $(document).ready(function () {
             console.error("No slider items found.");
             return;
         }
-
         let lengthItems = items.length;
         let firstClone = items[0].cloneNode(true);
         let lastClone = items[lengthItems - 1].cloneNode(true);
@@ -197,21 +202,21 @@ $(document).ready(function () {
                                             <div class="home-product-item__wrap">
                                                 <div class="home-product-item__sale">
                                                     <div class="home-product-item__imgg">
-                                                        <a href="#" class="product_link">
+                                                        <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
                                                             <img src="/user/assets/upload/${value.image}"class="home-product-item__img">
                                                         </a>
                                                     </div>
                                             <div class="home-product-item__sale-watch-1">
-                                                <a href="#" class="sale">
+                                                <a href="#" data-product-id=${value.id} class="sale btnAddCart">
                                                     <i class="fa-solid fa-cart-shopping"></i>
                                                 </a>
-                                                <a href="#" class="eye">
+                                                <a href="/user/product_detail/product_details.html?id=${value.id}" class="eye">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
                                             </div>
                                         </div>
 
-                                        <a href="#" class="product_link">
+                                        <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
                                             <h4 class="home-product-item__name">${value.name}</h4>
                                         </a>
                                         <div class="home-product-item__price">
@@ -266,19 +271,20 @@ $(document).ready(function () {
                                             <div class="home-product-item__wrap">
                                                 <div class="home-product-item__sale">
                                                         <div class="home-product-item__img2">
-                                                            <img src="/user/assets/upload/${value.image}" class="home-product-item__img">
-                                                        </div>
+                                                            <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
+                                                                <img src="/user/assets/upload/${value.image}"class="home-product-item__img">
+                                                            </a>                                                        </div>
                                                     <div class="home-product-item__sale-watch-1">
-                                                        <a href="#" class="sale">
+                                                        <a href="#" data-product-id=${value.id} class="sale btnAddCart">
                                                             <i class="fa-solid fa-cart-shopping"></i>
                                                         </a>
-                                                        <a href="#" class="eye">
+                                                        <a href="/user/product_detail/product_details.html?id=${value.id}" class="eye">
                                                             <i class="fa-solid fa-eye"></i>
                                                         </a>
                                                     </div>
                                                 </div>
 
-                                                <a href="#" class="product_link">
+                                                <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
                                                     <h4 class="home-product-item__name">${value.name}</h4>
                                                 </a>`;
                         if (value.discount > 0) {
@@ -330,19 +336,21 @@ $(document).ready(function () {
                                             <div class="home-product-item__wrap">
                                                 <div class="home-product-item__sale">
                                                         <div class="home-product-item__img2">
-                                                            <img src="/user/assets/upload/${value.image}" class="home-product-item__img">
+                                                            <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
+                                                                <img src="/user/assets/upload/${value.image}"class="home-product-item__img">
+                                                            </a>
                                                         </div>
                                                     <div class="home-product-item__sale-watch-1">
-                                                        <a href="#" class="sale">
+                                                        <a href="#" data-product-id=${value.id} class="sale btnAddCart">
                                                             <i class="fa-solid fa-cart-shopping"></i>
                                                         </a>
-                                                        <a href="#" class="eye">
+                                                        <a href="/user/product_detail/product_details.html?id=${value.id}" class="eye">
                                                             <i class="fa-solid fa-eye"></i>
                                                         </a>
                                                     </div>
                                                 </div>
 
-                                                <a href="#" class="product_link">
+                                                <a href="/user/product_detail/product_details.html?id=${value.id}" class="product_link">
                                                     <h4 class="home-product-item__name">${value.name}</h4>
                                                 </a>`;
                         if (value.discount > 0) {
@@ -448,4 +456,51 @@ $(document).ready(function () {
             }
         });
 
+    // Thêm vào giỏ hàng(thêm vào Session)
+    $('body').off('click', '.btnAddCart').on('click', '.btnAddCart', function (e) {
+        e.preventDefault();
+        let productId = $(this).data('product-id');
+        addToCart(productId);
+    });
+    showCount();
+    function showCount() {
+        var token = localStorage.getItem('token');
+        var decodedToken = jwt_decode(token);
+        var userId = decodedToken.userId;
+
+        const cartKey = `cart_${userId}`;
+        const cartCount = JSON.parse(localStorage.getItem(cartKey)) || {};
+        var totalQuantity = 0;
+        $.each(cartCount, function (index, item) {
+            totalQuantity++;
+        });
+        $('#cartCount').html(totalQuantity);
+    }
+    // Hàm gọi AJAX để thêm sản phẩm vào giỏ hàng
+    function addToCart(productId) {
+        $.ajax({
+            url: `http://localhost:8881/cart/add/${productId}?quantity=1`,
+            method: 'POST',
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            success: function (response) {
+                var decodedToken = jwt_decode(token);
+                var userId = decodedToken.userId;
+                if (response.data.idUser == userId) {
+                    const cartKey = `cart_${userId}`;
+
+                    const cart = JSON.parse(localStorage.getItem(cartKey)) || {};
+                    cart[response.data.product.id] = response.data;
+
+                    localStorage.setItem(cartKey, JSON.stringify(cart));
+                    alert("Thêm sản phẩm vào giỏ hàng thành công!");
+                    showCount();
+                }
+            },
+            error: function (error) {
+                console.error('Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng:', error);
+            }
+        });
+    }
 });

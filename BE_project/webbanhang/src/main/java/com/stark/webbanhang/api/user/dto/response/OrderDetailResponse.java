@@ -1,7 +1,9 @@
 package com.stark.webbanhang.api.user.dto.response;
 
+import com.stark.webbanhang.api.user.entity.Product;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +18,6 @@ public class OrderDetailResponse {
      double price;
      int quantity;
      double totalMoney;
-     String productName;
      UUID orderID;
-     List<ProductResponse> product;
+     ProductResponse product;
 }

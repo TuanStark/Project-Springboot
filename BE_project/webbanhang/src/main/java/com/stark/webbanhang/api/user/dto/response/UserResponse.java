@@ -19,7 +19,6 @@ public class UserResponse {
     UUID id;
     String firstName;
     String lastName;
-    //String password;
     String email;
     String phone;
     String address;

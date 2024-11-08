@@ -17,6 +17,7 @@ import java.util.Set;
 
 public class Order extends BaseEntity {
     private int status;
+    private String OrderId;
     private String note;
     @Column(name = "order_date")
     private LocalDate orderDate;

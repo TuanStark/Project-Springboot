@@ -5,92 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="/user/assets/css/style.css">
+    <link rel="stylesheet" href="/user/assets/css/base.css">
     <link rel="stylesheet"
-        href="./assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
+        href="/user/assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="/user/assets/css/grid.css">
+    <link rel="stylesheet" href="/user/assets/css/cart.css">
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-wrap ">
-            <div class="logo">
-                <a href="index.html" class="logo-wrap">
-                    <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
-                        width="157" height="36">
-                </a>
-            </div>
-            <div class="navigation-wraper">
-                <nav class="header-navbar">
-                    <ul class="navigation-wraper-horizontal">
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Sản Phẩm</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Khuyến mãi</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Dịch vụ</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Tư vấn khách hàng</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Hệ thống cửa hàng</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Liên hệ</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="header-right">
-                <div class="icon-header">
-                    <span class=" header-icon">
-                        <button class="header-icon-button js-find-button"><i
-                                class="fa-solid fa-magnifying-glass"></i></button>
-                    </span>
-                    <!-- User Layout -->
-                    <div class="header__account">
-                        <div class="header__account-wrap">
-                            <i class="fa-solid fa-thin fa-user"></i>
-                            <div class="header__acount-list">
-                                <a href="authenform.html" class="acount" title="Đăng nhập">Đăng nhập</a>
-                                <a href="authenform.html" class="acount" title="Đăng kí">Đăng kí</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Cart layout -->
-                    <div class="header__cart">
-                        <a href="cart.html" class="header__cart-link">
-                            <div class="header__cart-wrap">
-                                <i class="fa-solid fa-thin fa-cart-shopping"></i>
-                                <span class="count-item count-item-pr">0</span>
-                                <div class="header__cart-list header__cart-list--no-cart">
-                                    <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <header class="header" id="header">
+        <!-- Fragment Header -->
     </header>
 
     <div class="content-area">
@@ -98,6 +24,7 @@
             <div class="row">
                 <div class="col l-7">
                     <div class="content-item">
+
                         <table class="shop__table">
                             <thead>
                                 <tr>
@@ -115,57 +42,14 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="shop__table-item">
-                                    <td class="product-remove"><a href="">x</a></td>
-                                    <td class="product-check"><input type="checkbox"></td>
-                                    <td class="product-thumbnail">
-                                        <a href="">
-                                            <img width="300px" height="300px" src="https://codengon.vn/banhngot/wp-content/uploads/2022/09/img-cake-21-458x493-1-300x300.webp"
-                                                alt="">
-                                        </a>
-                                    </td>
-                                    <td class="product-name"><a href="">Bánh cupcake glory</a></td>
-                                    <td class="product-price"><span class="price">90.000đ</span></td>
-                                    <td class="product-quantity">
-                                        <div class="checkkk">
-                                            <div class="quantity">
-                                                <input type="button" value="-" class="bttn bttn-minus is-form">
-                                                <input type="number" value="1" class="bttn input-text" >
-                                                <input type="button" value="+" class="bttn bttn-plus is-form">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="price">90.000đ</span>
-                                    </td>
-                                </tr>
-                                <tr class="shop__table-item">
-                                    <td class="product-remove"><a href="">x</a></td>
-                                    <td class="product-check"><input type="checkbox"></td>
-                                    <td class="product-thumbnail">
-                                        <a href="">
-                                            <img width="300px" height="300px" src="https://codengon.vn/banhngot/wp-content/uploads/2022/09/img-cake-21-458x493-1-300x300.webp"
-                                                alt="">
-                                        </a>
-                                    </td>
-                                    <td class="product-name"><a href="">Bánh cupcake glory</a></td>
-                                    <td class="product-price"><span class="price">90.000đ</span></td>
-                                    <td class="product-quantity">
-                                        <div class="checkkk">
-                                            <div class="quantity">
-                                                <input type="button" value="-" class="bttn bttn-minus is-form">
-                                                <input type="number" value="1" class="bttn input-text" >
-                                                <input type="button" value="+" class="bttn bttn-plus is-form">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="price">90.000đ</span>
-                                    </td>
-                                </tr>
+                            <tbody id="cartItems">
+                                <!-- Load giỏ hàng -->
                             </tbody>
+                            <tfoot>
+
+                            </tfoot>
                         </table>
+
                     </div>
                 </div>
 
@@ -177,30 +61,33 @@
                             </tr>
                         </thead>
                     </table>
-                    <table cellspacing="0"  class="shop__table">
+                    <table cellspacing="0" class="shop__table">
                         <tbody>
                             <tr class="cart-subtotal">
                                 <th>Tạm tính</th>
                                 <td>
-                                    <span class="tam-tinh">3.709.000đ</span>
+                                    <span class="tam-tinh" id="subTotal">0đ</span>
                                 </td>
                             </tr>
                             <tr class="cart-total">
                                 <th>Tổng</th>
                                 <td>
-                                    <span class="tong">3.709.000đ</span>
+                                    <span class="tong" id="Total">0đ</span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="check-out">
-                        <a href="" class="btn-check">Tiến hành thanh toán</a>
+
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
-    <div class="modal">
+
+    <!-- <div class="modal">
         <div class="modal__overlay"></div>
 
         <div class="modal__body js-modal__body" id="search__btn">
@@ -225,15 +112,13 @@
                                 <a class="header-icon-link js-header-icon-link"><i
                                         class="fa-solid fa-magnifying-glass"></i></a>
                             </span>
-                            <!-- User Layout -->
                             <div class="header__account">
                                 <div class="header__account-wrap">
                                     <i class="fa-solid fa-thin fa-user"></i>
-                                  
+
                                 </div>
 
                             </div>
-                            <!-- Cart layout -->
                             <div class="header__cart">
                                 <a href="cart.html" class="header__cart-link">
                                     <div class="header__cart-wrap">
@@ -250,119 +135,16 @@
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="footer">
-        <div class="mid-footer">
-            <div class="grid-2">
-                <div class="grid__row">
-                    <div class="grid__column-tt">
-                        <div class="footer-block">
-                            <a href="#" class="footer-link">
-                                <img src="https://theme.hstatic.net/200000833741/1001197874/14/logo-footer.png?v=2"
-                                    alt="" width="245" height="60">
-                            </a>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div class="content">
-                                    Địa chỉ:
-                                    <span>150/8 Nguyễn Duy Cung, Phường 12, Tp.HCM</span>
-                                </div>
-                            </div>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-mobile-screen-button"></i>
-                                <div class="content">
-                                    Số điện thoại:
-                                    <span>0845663357</span>
-                                </div>
-                            </div>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-envelope"></i>
-                                <div class="content">
-                                    Email:
-                                    <span>lecongtuan472004@gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Hỗ trợ khách hàng
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Tìm kiếm</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Tin tức</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Hướng dẫn làm bánh</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Chính sách
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách bán hàng</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách đổi trả hàng</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách giao hàng</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Fanpage
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="https://www.facebook.com/congtuan.le.33483" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/facebook.png?v=2"
-                                            alt="">
-                                        <span>facebook</span>
-                                    </a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/instagram.png?v=2"
-                                            alt="">
-                                        <span>instagram</span>
-                                    </a>
-                                </li>
-
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/tiktok.png?v=2"
-                                            alt="">
-                                        <span>tiktok</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        </div>
-
+    </div> -->
+    <footer class="footer" id="footer">
+        <!-- Fragment footer -->
     </footer>
-    
-    <script src="./assets/js/slickSlider.js"></script>
-    <script src="./assets/js/modal.js"></script>
-    <script src="./assets/js/quantity.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/user/assets/js/modal.js"></script>
+    <script src="/user/partials/fragment.js"></script>
+    <script src="/user/assets/js-load-data/cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 </body>
 
 </html>

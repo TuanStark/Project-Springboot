@@ -1,51 +1,68 @@
 $(document).ready(function () {
     var size = 5;
     var limit = 4;
-    loadPage(1, size, limit);
-
+    loadPage();
+    // formart tiền
+    function formatCurrency(value) {
+        if (isNaN(value)) {
+            return '';
+        }
+        return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    }
+    //forrmat date
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('vi-VN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+    }
     $(document).on('click', '.page-link', function (e) {
         e.preventDefault();
         var page = $(this).data('page');
         if (page) {
-            loadPage(page, size, limit);
+            loadPage();
         }
     });
 
-    function loadPage(page, size, limit) {
-        var link = `http://localhost:8881/admin/news/getAll?page=${page}&size=${size}&limit=${limit}`;
+    function loadPage() {
         var token = localStorage.getItem("token");
-
         $.ajax({
             method: "GET",
-            url: link,
+            url: `http://localhost:8881/admin/order/getAll?limit=100`,
             headers: {
                 "Authorization": "Bearer " + token
             }
         })
             .done(function (msg) {
-                $("#categoryGetAll").empty();
-
+                //console.log("Full response:", JSON.stringify(msg, null, 2));
+                $("#GetAll").empty();
                 if (msg.data.data != null) {
                     $(".dataTables_empty").hide();
-
                     $.each(msg.data.data, function (index, value) {
-                        console.log("Full response:", JSON.stringify(msg, null, 2));
+                        //console.log("Full response:", JSON.stringify(value, null, 2));
                         var stt = (msg.data.currentPage - 1) * msg.data.pageSize + index + 1;
-
                         var html = `<tr>
-                                    <td>${stt}</td> <!-- Số thứ tự -->
-                                    
-                                    <td>${value.title}</td>
-                                    <td><img src="/user/assets/upload/${value.image}" style="width: 60px; height: 60px;"></td>
-                                    <td>${value.createdAt}</td>
-                                    <td>${value.lastName}</td>
+                                    <td>${stt}</td> 
+                                    <td>${value.orderId}</td>
+                                    <td>${value.userID.lastName}</td>
+                                    <td>${formatCurrency(value.totalMoney)}</td>
                                     <td>
-                                        <a href="#" data-id="${value.id}" class="btn btn-sm btn-primary btnEdit" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" id="btnEditCategory">Sửa</a>
-                                        <a href="#" data-id="${value.id}" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                        <select id="Status" data-id-order="${value.id}" onchange="getStatusValue(this)">
+                                            <option value="1" ${value.status == 1 ? 'selected' : ''}>Chưa thanh toán</option>
+                                            <option value="0" ${value.status == 0 ? 'selected' : ''}>Đã thanh toán</option>
+                                        </select>
+                                    </td>
+                                    <td>${formatDate(value.orderDate)}</td>
+                                   
+                                    <td><span>${value.paymentMethods == 1 ? 'Tiền mặt' : 'Chuyển khoản'}</span></td>  
+                                     <td>
+                                        <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" data-id="${value.id}" class="btn btn-primary btnView">Xem</a>
                                     </td>
                                 </tr>`;
-                        $("#categoryGetAll").append(html);
+                        $("#GetAll").append(html);
                     });
 
                     var currentPage = msg.data.currentPage;
@@ -130,177 +147,76 @@ $(document).ready(function () {
     }
 
     // Xóa post 
-    $(document).on('click', '.btnDelete', function (e) {
+    $(document).on('click', '.btnView', function (e) {
         e.preventDefault();
         var token = localStorage.getItem("token");
         var id = $(this).data("id");
-
-        if (confirm("Bạn có chắc chắn muốn xóa không?")) {
-
-
-            $.ajax({
-                method: "DELETE",
-                url: `http://localhost:8881/admin/news/delete/${id}`,
-                headers: {
-                    "Authorization": "Bearer " + token
-                }
-            })
-                .done(function (msg) {
-                    alert("Đã xóa thành công!");
-                    loadPage(1, size, limit);
-                })
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    alert("Xóa không thành công. Vui lòng thử lại!");
-                    console.error("Error:", textStatus, errorThrown);
-                });
-        }
-    });
-
-
-    $('.btnAdd').click(function () {
-        $('#titlePost').text('Thêm tin tức');
-    })
-
-    //btnEditCategory
-    $(document).on('click', '.btnEdit', function (e) {
-        e.preventDefault();
-        $('#titlePost').text('Sửa tin tức');
-        var id = $(this).data("id");
-        var token = localStorage.getItem("token");
-
         $.ajax({
-            method: 'GET',
-            url: `http://localhost:8881/admin/news/getByID/` + id,
+            method: "GET",
+            url: `http://localhost:8881/admin/order/getById/${id}`,
             headers: {
                 "Authorization": "Bearer " + token
-            },
-            success: function (response) {
-                console.log("Full response:", JSON.stringify(response, null, 2));
-                var html = `<tr>
-                                <td><img src="/user/assets/upload/${response.data.image}" style="margin: 10px;" alt="Image" width="50"></td>
-                                <td>
-                                    <a href="#" data-id="" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                </td>
-                            </tr>`;
-                $('#imageListContainer').append(html);
-                $('#postId').val(response.data.id);           // Đặt giá trị id vào input ẩn
-                $('#title').val(response.data.title);       // Đặt giá trị tên danh mục
-                $('#description').val(response.data.description);
-                $('#detail').val(response.data.detail);
-
-            },
-            error: function (xhr, status, error) {
-                alert('Không thể lấy thông tin');
-                console.error(xhr, status, error);
             }
-        });
-    })
+        })
+            .done(function (response) {
+                //console.log("Full response:", JSON.stringify(response, null, 2));
+                const value = response.data;
+                $('#OrderId').val(value.orderId)
+                $('#lastName').val(value.userID.lastName)
+                $('#totalMoney').val(formatCurrency(value.totalMoney))
+                $('#phone').val(value.userID.phone)
+                $('#inputAddress').val(value.userID.address)
+                $('#orderDate').val(formatDate(value.orderDate))
+                $('#status').val(value.status == 1 ? "Chưa thanh toán" : "Đã thanh toán")
+                // Hiển thị chi tiết đơn hàng
+                $('#getAllorderDetail').empty();
+                var i = 1;
+                value.orderDetails.forEach(detail => {
 
-    // thêm và sửa category
-    $('#btnSave').click(function (event) {
-        event.preventDefault();
-        var token = localStorage.getItem("token");
+                    const productName = detail.product.name;
+                    const orderDetailQuantity = detail.quantity;
+                    const orderDetailPrice = detail.price;
 
-        var image = $('#productImages')[0].files[0]; // Lấy hình ảnh đầu tiên từ input
-        var postId = $('#postId').val();
-        var title = $('#title').val();
-        var description = $('#description').val();
-        var detail = $('#detail').val();
-
-        var formData = new FormData();
-        formData.append('postId', postId);
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('detail', detail);
-        formData.append('file', image);
-
-        if (postId == '') {
-
-            if (image) {
-                $.ajax({
-                    url: 'http://localhost:8881/admin/news/add',
-                    type: 'POST',
-                    headers: {
-                        "Authorization": "Bearer " + token
-                    },
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        alert('Thêm tin tức thành công!');
-                        $('#imageListContainer').empty();
-                        $('#exampleModal').modal('hide');
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert('Thêm tin tức thất bại!');
-                    }
+                    var html = `<tr class="cart_item">
+                                <td>${i}</td>
+                                <td>${productName}</td>
+                                <td>${formatCurrency(orderDetailPrice)}</td>
+                                <td>${orderDetailQuantity}</td>
+                                <td>${formatCurrency(orderDetailQuantity * orderDetailPrice)}</td>
+                            </tr>`
+                    $('#getAllorderDetail').append(html);
+                    i++;
                 });
-            } else {
-                console.error('Chưa chọn hình ảnh nào.');
-            }
-        } else {
-            if (image) {
-                $.ajax({
-                    url: 'http://localhost:8881/admin/news/update/' + postId,
-                    type: 'PUT',
-                    headers: {
-                        "Authorization": "Bearer " + token
-                    },
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        alert('Cập nhật tin tức thành công!');
-                        $('#imageListContainer').empty();
-                        $('#exampleModal').modal('hide');
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert('Cập nhật tin tức thất bại!');
-                    }
-                });
-            } else {
-                console.error('Chưa chọn hình ảnh nào.');
-            }
-        }
 
-    });
-
-    // Khi người dùng chọn file
-    $('#productImages').on('change', function () {
-        $('#imageListContainer').empty(); // Xóa các hàng hình ảnh preview trước đó
-        var files = this.files; // Lấy danh sách các file đã chọn
-
-        if (files.length > 0) {
-            $.each(files, function (index, file) {
-                var reader = new FileReader();
-
-                // Khi file được đọc thành công
-                reader.onload = function (e) {
-                    // Tạo một thẻ <img> với src là dữ liệu base64 của ảnh
-                    var img = `<img src="${e.target.result}" style="margin: 10px;" alt="Image" width="50">`;
-
-                    // Tạo HTML cho mỗi hàng chứa hình ảnh và nút Xóa
-                    var html = `<tr>
-                                    <td>${img}</td> <!-- Hiển thị hình ảnh -->
-                                    <td>
-                                        <a href="#" data-id="${index}" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                    </td>
-                                </tr>`;
-                    // Thêm hàng mới vào bảng #imageListContainer
-                    $('#imageListContainer').append(html);
-                };
-
-                // Đọc file dưới dạng DataURL (base64)
-                reader.readAsDataURL(file);
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                alert("Xóa không thành công. Vui lòng thử lại!");
+                console.error("Error:", textStatus, errorThrown);
             });
-        }
     });
 
-    $('#imageListContainer').on('click', '.btnDelete', function (e) {
-        e.preventDefault();
-        $(this).closest('tr').remove();
-    });
+    window.getStatusValue = function (selectElement) {
+        var token = localStorage.getItem("token");
+        const selectedValue = selectElement.value;
+        const orderId = selectElement.getAttribute('data-id-order');
+        //console.log("Selected Value:", selectedValue);
+        //console.log("Order ID:", orderId);
+        $.ajax({
+            method: "PUT",
+            url: `http://localhost:8881/admin/order/update/${orderId}?status=${selectedValue}`,
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        })
+            .done(function (response) {
+                //console.log("Full response:", JSON.stringify(response, null, 2));
+                //alert("update thành công")
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                alert("Xóa không thành công. Vui lòng thử lại!");
+                console.error("Error:", textStatus, errorThrown);
+            });
+
+    }
 
 });

@@ -24,10 +24,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
+
 
 @Service
 @Slf4j
@@ -42,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
      CategoryMapper categoryMapper;
 
     @Override
+    @Transactional
     public ProductResponse createProduct(ProductRequest request) {
         Product product = productMapper.toProduct(request);
         product.setAlias(request.getName().toLowerCase().replaceAll("\\s+", "-"));
@@ -56,6 +58,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ProductResponse updateProduct(UUID id, ProductRequest request) {
         Product product = productRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Not found Product"));
@@ -65,8 +68,6 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(()-> new RuntimeException("Not found Category"));
         product.setCategory(category);
         productRepository.save(product);
-
-        // Upload ảnh liên quan tới sản phẩm
         galleryService.updateGalleryImages(product.getId(),product,request.getImages(),request.getIsDefaultList());
         ProductResponse response = this.convertToResponse(product);
         return response;
@@ -76,7 +77,6 @@ public class ProductServiceImpl implements ProductService {
     public PageResponse<ProductResponse> getAllProduct(int page, int size) {
         Sort sort = Sort.by("createdAt").descending();
         Pageable pageable = PageRequest.of(page-1,size,sort);
-
         Page<Product> pageData = productRepository.findAll(pageable);
 
         return PageResponse.<ProductResponse>builder()
@@ -95,13 +95,13 @@ public class ProductServiceImpl implements ProductService {
         List<GalleryResponse> list = galleryRepository.findImagesAndDefaultsByProductId(product.getId());
         response.setImages(list);
         Gallery gallery = galleryRepository.findDefaultImagesByProductId(product.getId());
-        System.out.println(gallery.getImage());
         response.setImage(gallery.getImage());
         return response;
     }
 
 
     @Override
+    @Transactional
     public void deleteProduct(UUID id) {
         List<Gallery> list = galleryRepository.findByProduct_Id(id);
         galleryRepository.deleteAll(list);

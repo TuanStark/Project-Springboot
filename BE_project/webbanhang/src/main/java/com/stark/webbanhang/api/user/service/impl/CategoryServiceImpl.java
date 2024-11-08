@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor// thay co contructer nó sẽ tự động inject
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CategoryServiceImpl implements CategoryService {
     CategoryMapper categoryMapper;
@@ -86,7 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
         for(Product product : category.getProduct()) {
             product.setCategory(null);
         }
-        category.getProduct().clear(); // Clear the collection
+        category.getProduct().clear();
         categoryRepository.delete(category);
     }
 

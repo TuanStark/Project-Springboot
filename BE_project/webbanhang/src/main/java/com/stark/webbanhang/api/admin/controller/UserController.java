@@ -36,9 +36,9 @@ public class UserController {
     }
 
     @GetMapping("/myInfo")
-    ResponseObject<UserResponse> getMyInfo(){
+    ResponseObject<UserResponse> getMyInfo(@RequestHeader("Authorization") String authHeader){
         return ResponseObject.<UserResponse>builder()
-                .data(userService.getMyInfo())
+                .data(userService.getMyInfo(authHeader))
                 .build();
     }
 

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    loadPage(1); // Tải trang đầu tiên
+    loadPage(1);
 
     // Xử lý sự kiện phân trang (event delegation)
     $(document).on('click', '.page-link', function (e) {
@@ -11,7 +11,7 @@ $(document).ready(function () {
     });
 
     function loadPage(page) {
-        var link = `http://localhost:8881/admin/product/getAll?page=${page}`;
+        var link = `http://localhost:8881/admin/product/getAll?page=${page}&size=6`;
         var token = localStorage.getItem("token");
 
         $.ajax({
@@ -22,8 +22,8 @@ $(document).ready(function () {
             }
         })
             .done(function (msg) {
+                //console.log("Full response:", JSON.stringify(msg, null, 2));
                 $("#prodductGetAll").empty();
-
                 if (msg.data.data != null) {
                     $(".dataTables_empty").hide();
                     $.each(msg.data.data, function (index, value) {
@@ -32,7 +32,7 @@ $(document).ready(function () {
                         var html = `<tr>
                                     <td>${stt}</td> <!-- Số thứ tự -->
                                     <td>${value.name}</td>
-                                    <td>${value.categoryName}</td>
+                                    <td>${value.category.name}</td>
                                     <td><img src="/user/assets/upload/${value.image}" style="width: 76px; height: 70px;"></td>
                                     <td>${value.createdAt}</td>
                                     <td>
@@ -192,7 +192,7 @@ $(document).ready(function () {
                 "Authorization": "Bearer " + token
             },
             success: function (response) {
-                console.log("Full response:", JSON.stringify(response, null, 2));
+                //console.log("Full response:", JSON.stringify(response, null, 2));
                 $('#productId').val(response.data.id);
                 $('#productName').val(response.data.name);
                 $('#productDecription').val(response.data.description);

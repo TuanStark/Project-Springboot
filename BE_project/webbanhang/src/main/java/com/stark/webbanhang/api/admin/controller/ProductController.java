@@ -71,7 +71,6 @@ public class ProductController {
     @GetMapping("/getById/{id}")
     public ResponseObject<ProductResponse> getById(@Valid @PathVariable UUID id){
         ProductResponse response = productService.getProductById(id);
-
         return ResponseObject.<ProductResponse>builder()
                 .code(200)
                 .message(StatusMessage.SUCCESS)
@@ -90,7 +89,7 @@ public class ProductController {
                 .build();
     }
 
-    @GetMapping("/getByCategory/{id}")
+    @GetMapping("/getByCategory/{categoryId}")
     public ResponseObject<PageResponse> getProductByIdCategoryId(
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "size", required = false) Integer size,

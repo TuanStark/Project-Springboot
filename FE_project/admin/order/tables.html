@@ -65,10 +65,10 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
                             <h6 class="m-0 font-weight-bold text-primary">Danh sách đơn hàng</h6>
-                            <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
+                            <!-- <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                Thêm tin tức
-                            </button>
+                                Xem đơn hàng
+                            </button> -->
                             <!-- Form thêm sửa -->
                             <!-- Button to Open the Modal -->
                             <!-- The Modal -->
@@ -88,49 +88,71 @@
 
                                         <!-- Modal Body with Form -->
                                         <div class="modal-body">
-                                            <form id="formPost">
-                                                <div class="form-group">
-                                                    <label for="title">Tiêu đề:</label>
-                                                    <input type="text" name="title" class="form-control" id="title"
-                                                        required>
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="OrderId">Mã đơn hàng</label>
+                                                        <input type="text" class="form-control" id="OrderId">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastName">Tên Khách Hàng</label>
+                                                        <input type="text" class="form-control" id="lastName">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="totalMoney">Tổng tiền</label>
+                                                        <input type="email" class="form-control" id="totalMoney">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="phone">Số điện thoại</label>
+                                                        <input type="text" class="form-control" id="phone">
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="description">Mô tả:</label>
-                                                    <input type="text" name="description" class="form-control"
-                                                        id="description" required>
+                                                    <label for="inputAddress">Đại chỉ</label>
+                                                    <input type="text" class="form-control" id="inputAddress">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="categoryImage">Hình Ảnh:</label>
-                                                    <br>
-                                                    <input type="file" id="productImages" multiple accept="image/*">
-                                                    <table class="table table-bordered" id="dataTable" width="100%"
-                                                        cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Hình Ảnh</th>
-                                                                <th>Hành Động</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="imageListContainer">
-                                                            <!-- Load hình ảnh tại đây -->
-                                                        </tbody>
-                                                    </table>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="orderDate">Ngày tạo đơn</label>
+                                                        <input type="text" class="form-control" id="orderDate">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="status">Trạng thái</label>
+                                                        <input type="text" class="form-control" id="status">
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="detail">Chi tiết bài viết:</label>
-                                                    <textarea id="detail" name="detail" rows="4" cols="50"></textarea>
-                                                </div>
-                                                <input type="hidden" id="postId"> <!-- Để lưu id nếu cần sửa -->
+
                                             </form>
+                                            <h4>Chi tiết đơn hàng</h4>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%"
+                                                    cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Giá</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Thành tiền</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="getAllorderDetail">
+                                                        <!-- load  danh sách thư mục tại đây -->
+                                                    </tbody>
+
+                                                </table>
+
+                                            </div>
                                         </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Thoát</button>
-                                            <button type="submit" form="formCategory" class="btn btn-primary"
-                                                id="btnSave">Lưu
-                                            </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -144,10 +166,10 @@
                                             <th>STT</th>
                                             <th>Mã đơn hàng</th>
                                             <th>Tên khách hàng</th>
-                                            <th>Số điện thoại</th>
-                                            <th>tổng tiền</th>
+                                            <th>Tổng tiền</th>
                                             <th>Trạng thái</th>
                                             <th>Ngày tạo</th>
+                                            <th>Hình thức thanh toán</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
@@ -163,7 +185,7 @@
                                             <th></th>
                                         </tr>
                                     </tfoot>
-                                    <tbody id="categoryGetAll">
+                                    <tbody id="GetAll">
                                         <!-- load  danh sách thư mục tại đây -->
                                     </tbody>
 
@@ -229,7 +251,7 @@
     <script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/admin/js/sb-admin-2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"></script>
-    <script src="/admin/news/custom.js"></script>
+    <script src="/admin/order/custom.js"></script>
     <script src="/admin/js/fragment.js"></script>
     <script src=""></script>
 </body>

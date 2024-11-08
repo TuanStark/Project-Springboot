@@ -3,6 +3,7 @@ package com.stark.webbanhang.api.user.service;
 import com.stark.webbanhang.api.user.dto.request.ProductRequest;
 import com.stark.webbanhang.api.user.dto.response.PageResponse;
 import com.stark.webbanhang.api.user.dto.response.ProductResponse;
+import com.stark.webbanhang.api.user.entity.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,4 +18,5 @@ public interface ProductService {
     public void deleteProduct(UUID id);
     public ProductResponse getProductById(UUID id);
     public PageResponse<ProductResponse> getProductByIdCategory(int page, int size, UUID categoryId);
+    public ProductResponse convertToResponse(Product product);
 }

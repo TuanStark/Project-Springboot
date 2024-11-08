@@ -5,105 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/user/assets/css/style.css">
     <link rel="stylesheet"
         href="./assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!-- <link rel="stylesheet" href="./assets/css/gri"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
-        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/slick.css">
-    <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/product_details.css">
-    <link rel="stylesheet" href="./assets/css/cart.css">
-    <link rel="stylesheet" href="./assets/css/pay.css">
+    <link rel="stylesheet" href="/user/assets/css/base.css">
+    <link rel="stylesheet" href="/user/assets/css/slick.css">
+    <link rel="stylesheet" href="/user/assets/css/grid.css">
+    <link rel="stylesheet" href="/user/assets/css/product_details.css">
+    <link rel="stylesheet" href="/user/assets/css/cart.css">
+    <link rel="stylesheet" href="/user/assets/css/pay.css">
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-wrap ">
-            <div class="logo">
-                <a href="index.html" class="logo-wrap">
-                    <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
-                        width="157" height="36">
-                </a>
-            </div>
-            <div class="navigation-wraper">
-                <nav class="header-navbar">
-                    <ul class="navigation-wraper-horizontal">
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Sản Phẩm</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Khuyến mãi</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Dịch vụ</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Tư vấn khách hàng</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Hệ thống cửa hàng</span>
-                            </a>
-                        </li>
-                        <li class="menu-item list-group-item">
-                            <a href="#" class="menu-item_link" style="transform: translateY(0%);">
-                                <span>Liên hệ</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="header-right">
-                <div class="icon-header">
-                    <span class=" header-icon icon-find">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    </span>
-                    <!-- User Layout -->
-                    <div class="header__account">
-                        <div class="header__account-wrap">
-                            <i class="fa-solid fa-thin fa-user"></i>
-                            <div class="header__acount-list">
-                                <a href="authenform.html" class="acount" title="Đăng nhập">Đăng nhập</a>
-                                <a href="authenform.html" class="acount" title="Đăng kí">Đăng kí</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Cart layout -->
-                    <div class="header__cart">
-                        <a href="cart.html" class="header__cart-link">
-                            <div class="header__cart-wrap">
-                                <i class="fa-solid fa-thin fa-cart-shopping"></i>
-                                <span class="count-item count-item-pr">0</span>
-                                <div class="header__cart-list header__cart-list--no-cart">
-                                    <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <header class="header" id="header">
+        <!-- Fragment headder -->
     </header>
 
     <div class="page-wrapper">
@@ -112,22 +28,20 @@
                 <div class="col l-12">
                     <div class="col-inner">
                         <div class="message-wrapper">
-                            <div class="message-container">
-                                <i class='bx bx-check'></i>
-                                <span>Bánh chocolate raspberry cupcakes” đã được thêm vào giỏ hàng</span>
-                            </div>
+                            <h1>Thanh toán</h1>
                         </div>
 
                         <div class="pay-content-area">
                             <div class="row">
-                                <div class="col l-12">
+                                <div class="col l-9">
                                     <div class="col-inner">
                                         <div class="woocommerce">
                                             <div class="woocommerce-form-login">
                                                 <div class="woocommerce-info">
                                                     <div class="woocommerce-text">
                                                         Bạn đã có tài khoản ?
-                                                        <a href="#" class="showlogin">Ấn vào đây để đăng nhập</a>
+                                                        <a href="/user/authenform.html" class="showlogin">Ấn vào đây để
+                                                            đăng nhập</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,35 +65,47 @@
                             </div>
                             <form action="" class="woocommerce-checkout">
                                 <div class="row">
-                                    <div class="col l-7">
+                                    <div class="col l-6">
                                         <div class="customer-details">
                                             <div class="clear">
                                                 <div class="woocommerce-billing-filed">
                                                     <h3>THÔNG TIN THANH TOÁN</h3>
                                                     <div class="woocommerce-billing-filed__wrapper">
-                                                        <div class="form-row">
-                                                            <span>Tên</span>
-                                                            <div class="input-wrapper">
-                                                                <input type="text" class="input-text">
+                                                        <div class="form-row"
+                                                            style="display: flex; justify-content: space-between;">
+                                                            <div>
+                                                                <span>Họ</span>
+                                                                <div class="input-wrapper">
+                                                                    <input type="text" class="input-text"
+                                                                        id="FisrtName">
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <span>Tên</span>
+                                                                <div class="input-wrapper">
+                                                                    <input type="text" class="input-text" id="LastName">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <span>Địa chỉ</span>
                                                             <div class="input-wrapper">
-                                                                <input type="text" class="input-text">
+                                                                <input type="text" class="input-text" id="address">
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <span>Số điện thoại</span>
                                                             <div class="input-wrapper">
-                                                                <input type="text" class="input-text">
+                                                                <input type="text" class="input-text" id="phone">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="woocommerce-account-filed">
                                                         <div class="woocommerce-form-label">
-                                                            <input type="checkbox" class="woocommerce-form-input">
-                                                            <span>Tạo tài khoản mới ?</span>
+                                                            <div class="woocommerce-text">
+                                                                <a href="/user/authenform.html" class="showlogin">Tạo
+                                                                    tài khoản mới ?</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +118,9 @@
                                                             <div class="form-row">
                                                                 <span>Ghi chú cho đơn hàng (tùy chọn)</span>
                                                                 <div class="input-wrapper">
-                                                                    <textarea  class="input-text textarea" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="2" cols="5"></textarea>
+                                                                    <textarea class="input-text textarea" id="note"
+                                                                        placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
+                                                                        rows="2" cols="5"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -213,27 +141,23 @@
                                                                 <th class="product-total">Tạm tính</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr class="cart_item">
-                                                                <td class="product-name">Bánh cupcake
-                                                                    <strong>x1</strong>
-                                                                </td>
-                                                                <td class="product-total">
-                                                                    <span class="woocommerce-price-amount amount">90.000đ</span>
-                                                                </td>
-                                                            </tr>
+                                                        <tbody id="cartItem">
+
                                                         </tbody>
                                                         <tfoot>
                                                             <tr class="cart-suntotal">
                                                                 <th>Tạm tính</th>
                                                                 <td>
-                                                                    <span class="woocommerce-price-amount amount">90.000đ</span>
+                                                                    <span
+                                                                        class="woocommerce-price-amount amount subTotal"></span>
                                                                 </td>
                                                             </tr>
                                                             <tr class="order-total">
                                                                 <th>Tổng</th>
                                                                 <td>
-                                                                    <span class="woocommerce-price-amount amount">90.000đ</span>
+                                                                    <span
+                                                                        class="woocommerce-price-amount amount subTotal"
+                                                                        id="totalPrice"></span>
                                                                 </td>
                                                             </tr>
                                                         </tfoot>
@@ -241,18 +165,28 @@
                                                     <div id="payment" class="woocommerce-checkout-payment">
                                                         <ul class="payment-method">
                                                             <li class="wc_payment-method payment-method-bacs">
-                                                                <input type="radio" id="payment-method-bacs" class="input-radio" name="payment_method" checked="checked" onchange="togglePaymentBox('payment-method-bacs')">
-                                                                <label for="payment-method-bacs">Chuyển khoản ngân hàng</label>
+                                                                <input type="radio" id="payment-method-bacs"
+                                                                    class="input-radio" name="payment_method"
+                                                                    checked="checked"
+                                                                    onchange="togglePaymentBox('payment-method-bacs')">
+                                                                <label for="payment-method-bacs">Chuyển khoản ngân
+                                                                    hàng</label>
                                                                 <div class="payment_box payment-method-bacs">
-                                                                    <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. 
-                                                                    Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. 
-                                                                    Đơn hàng sẽ được giao sau khi tiền đã chuyển.
+                                                                    <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng
+                                                                        của chúng tôi.
+                                                                        Vui lòng sử dụng Mã đơn hàng của bạn trong phần
+                                                                        Nội dung thanh toán.
+                                                                        Đơn hàng sẽ được giao sau khi tiền đã chuyển.
                                                                     </p>
                                                                 </div>
                                                             </li>
-                                                            <li class="wc_payment-method payment-method-cod payment-method-cod-1">
-                                                                <input type="radio" id="payment-method-cod" class="input-radio" name="payment_method" onchange="togglePaymentBox('payment-method-cod')">
-                                                                <label for="payment-method-cod">Trả tiền mặt khi nhận hàng</label>
+                                                            <li
+                                                                class="wc_payment-method payment-method-cod payment-method-cod-1">
+                                                                <input type="radio" id="payment-method-cod"
+                                                                    class="input-radio" name="payment_method"
+                                                                    onchange="togglePaymentBox('payment-method-cod')">
+                                                                <label for="payment-method-cod">Trả tiền mặt khi nhận
+                                                                    hàng</label>
                                                                 <div class="payment_box payment-method-cod">
                                                                     <p>Trả tiền mặt khi giao hàng</p>
                                                                 </div>
@@ -260,7 +194,8 @@
                                                         </ul>
                                                         <div class="place-order">
                                                             <div class="woocommerce-terms-and-conditions-wrapper">
-                                                                <button class="btn-alt">Đặt hàng</button>
+                                                                <button class="btn-alt" id="order_submit">Đặt
+                                                                    hàng</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -277,129 +212,20 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="mid-footer">
-            <div class="grid-2">
-                <div class="grid__row">
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <a href="#" class="footer-link">
-                                <img src="https://theme.hstatic.net/200000833741/1001197874/14/logo-footer.png?v=2"
-                                    alt="" width="245" height="60">
-                            </a>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div class="content">
-                                    Địa chỉ:
-                                    <span>150/8 Nguyễn Duy Cung, Phường 12, Tp.HCM</span>
-                                </div>
-                            </div>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-mobile-screen-button"></i>
-                                <div class="content">
-                                    Số điện thoại:
-                                    <span>0845663357</span>
-                                </div>
-                            </div>
-                            <div class="single-contact">
-                                <i class="fa-solid fa-envelope"></i>
-                                <div class="content">
-                                    Email:
-                                    <span>lecongtuan472004@gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Hỗ trợ khách hàng
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Tìm kiếm</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Tin tức</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Hướng dẫn làm bánh</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Chính sách
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách bán hàng</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách đổi trả hàng</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">Chính sách giao hàng</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="grid__column-9">
-                        <div class="footer-block">
-                            <h3 class="footer-title">
-                                Fanpage
-                            </h3>
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a href="https://www.facebook.com/congtuan.le.33483" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/facebook.png?v=2"
-                                            alt="">
-                                        <span>facebook</span>
-                                    </a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/instagram.png?v=2"
-                                            alt="">
-                                        <span>instagram</span>
-                                    </a>
-                                </li>
-
-                                <li class="list-item">
-                                    <a href="#" class="list-item-link">
-                                        <img src="https://theme.hstatic.net/200000833741/1001197874/14/tiktok.png?v=2"
-                                            alt="">
-                                        <span>tiktok</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        </div>
-
+    <footer class="footer" id="footer">
+        <!-- Fragment footer -->
     </footer>
 
-    <script src="./assets/js/indexx.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"
-        integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./assets/js/slickSlider.js"></script>
-    <script src="./assets/js/modal.js"></script>
-    <script src="./assets/js/product-dt.js"></script>
-    <script src="./assets/js/tab.js"></script>
-    <script src="./assets/js/ratting.js"></script>
-    <script src="./assets/js/tabpay.js"></script>
+    <script src="/user/assets/js/modal.js"></script>
+    <script src="/user/assets/js/product-dt.js"></script>
+    <script src="/user/assets/js/tab.js"></script>
+    <script src="/user/assets/js/tabpay.js"></script>
+    <script src="/user/partials/fragment.js"></script>
+    <script src="/user/assets/js-load-data/index.js"></script>
+    <script src="/user/assets/js-load-data/pay.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src=""></script>
 </body>
 
 </html>

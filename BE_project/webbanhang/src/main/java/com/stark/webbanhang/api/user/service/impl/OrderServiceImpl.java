@@ -1,14 +1,13 @@
 package com.stark.webbanhang.api.user.service.impl;
 
+import com.stark.webbanhang.api.user.dto.request.OrderDetailRequest;
 import com.stark.webbanhang.api.user.dto.request.OrderRequest;
-import com.stark.webbanhang.api.user.dto.response.CategoryResponse;
-import com.stark.webbanhang.api.user.dto.response.OrderResponse;
-import com.stark.webbanhang.api.user.dto.response.PageResponse;
-import com.stark.webbanhang.api.user.dto.response.UserResponse;
+import com.stark.webbanhang.api.user.dto.response.*;
 import com.stark.webbanhang.api.user.entity.Category;
 import com.stark.webbanhang.api.user.entity.Order;
 import com.stark.webbanhang.api.user.entity.User;
 import com.stark.webbanhang.api.user.mapper.OrderMapper;
+import com.stark.webbanhang.api.user.mapper.UserMapper;
 import com.stark.webbanhang.api.user.repository.OrderRepository;
 import com.stark.webbanhang.api.user.repository.UserRepository;
 import com.stark.webbanhang.api.user.service.OrderDetailService;
@@ -20,40 +19,52 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.control.MappingControl;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor// thay co contructer nó sẽ tự động inject
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OrderServiceImpl implements OrderService {
     OrderDetailService orderDetailService;
     OrderRepository orderRepository;
     OrderMapper orderMapper;
     UserRepository userRepository;
-    AuthenticationService authenticationService;
+    UserMapper userMapper;
+
 
     @Override
-    public OrderResponse createOder(OrderRequest orderRequest,String authHeader) {
-        String token = authHeader.substring(7);
-        UUID idUser = authenticationService.getCurrentUserId(token);
+    @Transactional
+    public OrderResponse createOder(OrderRequest orderRequest) {
         Order order = orderMapper.toOrder(orderRequest);
-        User user = userRepository.findById(idUser)
+        User user = userRepository.findById(orderRequest.getUserID())
                 .orElseThrow(()-> new AppException(ErrorCode.USER_EXISTED));
         order.setUser(user);
+        order.setStatus(1);
+        //Mã đơn hàng được thiết lập cùng với dãy số radom cùng với
+        String datePart = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        int randomPart = new Random().nextInt(900) + 100;
+        order.setOrderId("BK"+randomPart+datePart);
+        order.setOrderDate(LocalDate.now());
         Order savedOrder = orderRepository.save(order);
-        orderDetailService.createOrderDetail(savedOrder, orderRequest.getOrderDetails());
+        orderDetailService.createOrderDetail(order, orderRequest.getOrderDetails());
         OrderResponse response = this.convertToOrderResponse(savedOrder);
-        response.setUserName(user.getLastName());
-
+        List<OrderDetailResponse> orderDetails = orderDetailService.getOrderDetailResponse(order);
+        response.setOrderDetails(orderDetails);
         return response;
     }
 
@@ -88,6 +99,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(idOrder)
                 .orElseThrow(()-> new RuntimeException("Not found Order"));
         order.setStatus(status);
+        orderRepository.save(order);
         OrderResponse response = this.convertToOrderResponse(order);
         return response;
     }
@@ -98,11 +110,22 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.deleteById(idOrder);
     }
 
+    @Override
+    public OrderResponse getOrderById(UUID orderId) {
+        Order order = orderRepository.findById(orderId).orElseThrow(()-> new RuntimeException("Not Found Order"));
+        OrderResponse response = this.convertToOrderResponse(order);
+        List<OrderDetailResponse> orderDetails = orderDetailService.getOrderDetailResponse(order);
+        response.setOrderDetails(orderDetails);
+        return response;
+    }
+
     public OrderResponse convertToOrderResponse(Order order){
         OrderResponse response = orderMapper.toOrderResponse(order);
         User user = userRepository.findById(order.getUser().getId())
                 .orElseThrow(()-> new AppException(ErrorCode.USER_NOT_EXISTED));
-        response.setUserName(user.getLastName());
+        UserResponse userResponse = userMapper.toUserResponse(user);
+        response.setUserID(userResponse);
+        response.setOrderId(order.getOrderId());
         return response;
     }
 }

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/user/assets/css/style.css">
+    <link rel="stylesheet" href="/user/assets/css/base.css">
+    <link rel="stylesheet"
+        href="/user/assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/user/assets/css/grid.css">
+    <link rel="stylesheet" href="/user/assets/css/cart.css">
+    <link rel="stylesheet" href="/user/assets/css/order.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <!-- Fragment Header -->
+    </header>
+    <div class="page-wrapper">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-12">
+                    <div class="col-inner">
+                        <div class="pay-content-area">
+                            <form action="" class="woocommerce-checkout">
+                                <div class="row">
+                                    <div class="col l-6">
+                                        <div class="customer-details">
+                                            <div class="clear">
+                                                <div class="woocommerce-billing-filed">
+                                                    <h2>Chi tiết đơn hàng</h2>
+                                                    <div class="woocommerce-checkout-review-order">
+                                                        <table class="shop_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="product-name">Sản phẩm</th>
+                                                                    <th class="product-total">Tổng</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="orderDetail_item">
+                                                                <!-- Load order_item ở đây -->
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr class="cart-suntotal">
+                                                                    <th class="heading_footer">Tạm tính</th>
+                                                                    <td>
+                                                                        <span class="woocommerce-price-amount amount"
+                                                                            id="tempTotal">0đ</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="order-total">
+                                                                    <th class="heading_footer">Phương thức thanh toán
+                                                                    </th>
+                                                                    <td>
+                                                                        <span class="woocommerce-payment"
+                                                                            id="methodPayment">Không có</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="order-total">
+                                                                    <th class="heading_footer">Tổng</th>
+                                                                    <td>
+                                                                        <span class="woocommerce-price-amount amount"
+                                                                            id="subTotal">0đ</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col l-5">
+                                        <div class="has-border">
+                                            <div class="checkout-slider">
+                                                <h3>ĐƠN HÀNG</h3>
+                                                <div class="woocommerce-checkout-review-order">
+                                                    <strong class="thanks">Cảm ơn bạn. Đơn hàng của bạn đã được
+                                                        nhận</strong>
+                                                    <div class="verify">Trạng thái đơn hàng: <span class="status_order"
+                                                            id="status_order">Chờ xác
+                                                            nhận</span></div>
+                                                    <ul class="list_order">
+                                                        <li>Mã đơn hàng: <strong id="orderId"></strong></li>
+                                                        <li>Tên người nhận: <strong id="fn"> </strong><strong
+                                                                id="ln"></strong></li>
+                                                        <li>Số điện thoại: <strong id="phoneNB"></strong></li>
+                                                        <li>Địa chỉ: <strong id="adrr"></strong></li>
+                                                        <li>Ngày tạo đơn: <strong id="orderDate"></strong>
+                                                        </li>
+                                                        <li>Tổng cộng: <strong class="total" id="totals"></strong></li>
+                                                        <li>Phương thức thanh toán: <strong id="paymentMethod"></strong>
+                                                        </li>
+
+
+                                                    </ul>
+                                                    <a href="" class="btn-admin btnUpdate">
+                                                        <span>Về trang chủ</span>
+                                                        <i class='bx bx-chevron-right'></i>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer">
+        <!-- Fragment footer -->
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/user/assets/js/modal.js"></script>
+    <script src="/user/assets/js/product-dt.js"></script>
+    <script src="/user/assets/js/tab.js"></script>
+    <script src="/user/assets/js/tabpay.js"></script>
+    <script src="/user/partials/fragment.js"></script>
+    <script src="/user/assets/js-load-data/index.js"></script>
+    <!-- <script src="/user/assets/js-load-data/pay.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="/user/assets/js-load-data/order.js"></script>
+</body>
+
+</html>

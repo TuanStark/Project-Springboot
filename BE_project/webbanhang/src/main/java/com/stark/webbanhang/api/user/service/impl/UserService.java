@@ -26,6 +26,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,6 +45,7 @@ public class UserService {
     PasswordEncoder passwordEncoder;
     RoleRepository roleRepository;
     RoleMapper roleMapper;
+    AuthenticationService authenticationService;
 
     @Transactional
     public UserResponse createRequest(UserRequest request) {
@@ -62,16 +64,15 @@ public class UserService {
         return userMapper.toUserResponse(userRepository.save(user));
     }
 
-
     // Lấy thông tin của user đang đăng nhập hiện tại
-    public UserResponse getMyInfo(){
-      var context =  SecurityContextHolder.getContext();
-      String name = context.getAuthentication().getName();
+    public UserResponse getMyInfo( String authHeader ) {
+        String token = authHeader.substring(7); // Lấy token từ header (bỏ "Bearer ")
+        UUID idUser = authenticationService.getCurrentUserId(token);
 
-     User byUserName = userRepository.findByEmail(name)
-             .orElseThrow(()-> new AppException(ErrorCode.USER_EXISTED));
+        User byUserName = userRepository.findById(idUser)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_EXISTED));
 
-         return userMapper.toUserResponse(byUserName);
+        return userMapper.toUserResponse(byUserName);
     }
 
     @Transactional

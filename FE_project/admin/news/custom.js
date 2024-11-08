@@ -102,30 +102,25 @@ $(document).ready(function () {
     function generatePagination(currentPage, totalPages) {
         var pagination = `<nav aria-label="Page navigation example">
                             <ul class="pagination">`;
-
         // Nút 'Previous'
         pagination += `<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
                         <a class="page-link" href="#" data-page="${currentPage - 1}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
-                    </li>`;
-
+                  </li>`;
         // Các số trang
         for (var i = 1; i <= totalPages; i++) {
             pagination += `<li class="page-item ${i == currentPage ? 'active' : ''}">
                            <a class="page-link" href="#" data-page="${i}">${i}</a>
                        </li>`;
         }
-
         // Nút 'Next'
         pagination += `<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
                         <a class="page-link" href="#" data-page="${currentPage + 1}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>`;
-
         pagination += `</ul></nav>`;
-
         return pagination;
     }
 

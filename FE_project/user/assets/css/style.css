@@ -1,5 +1,4 @@
 html{
-    margin: 0;
     padding: 0;
 }
 body{
@@ -7,8 +6,8 @@ body{
     font-weight: bold;
     font-family: 'Arial', sans-serif !important;
     background-color: #f5f5f5;
+    margin: 0;
 }
-
 .header{
     margin: 0;
     height: 65px;
@@ -386,6 +385,7 @@ a{
     max-width: 100%;
     height: 100%;
     object-fit: cover;
+    width: 100%;
 }
 .home-product-item__imgg{
     height: 176.48px;
@@ -397,6 +397,7 @@ a{
 }
 .home-product-item__wrap{
     position: relative;
+    overflow: hidden;
 }
 .home-product-item__sale{
     display: inline-block;
@@ -720,6 +721,7 @@ font-size: 15px;
 }
 /* footer */
 .footer{
+    margin-top: 10px;
     background-color: #504e4e;
 }
 .mid-footer{
@@ -865,6 +867,10 @@ font-size: 15px;
 .shop-page-left{
     padding-top: 10px;
 }
+.shop-page-left1 {
+    padding-top: 10px;
+    margin-left: 17px;
+}
 .shop-page-home a{
     text-decoration: none;
     color: #898282;
@@ -882,4 +888,76 @@ font-size: 15px;
 select option{
     border: 1px solid #cfc7c7;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Pagination của product bên user */
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+    border-radius: 0.25rem;
+    margin-top: 20px;
+}
+
+.page-item {
+    margin: 0 2px;
+}
+
+.page-item .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.page-item .page-link:hover {
+    color: #0056b3;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+#btnUpdate {
+    padding: 10px 20px;    /* Kích thước padding */
+    font-size: 16px;       /* Kích thước font chữ */
+    border-radius: 5px;    /* Bo góc */
+    background-color: #007bff;  /* Màu nền theo Bootstrap primary */
+    color: white;          /* Màu chữ */
+    border: none;          /* Xóa viền */
+    cursor: pointer;       /* Hiển thị con trỏ khi hover */
+}
+
+#btnUpdate:hover {
+    background-color: #0056b3;  /* Màu nền khi hover */
 }

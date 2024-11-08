@@ -1,22 +1,23 @@
 package com.stark.webbanhang.api.user.service.impl;
 
 import com.stark.webbanhang.api.user.dto.request.OrderDetailRequest;
-import com.stark.webbanhang.api.user.dto.response.GalleryResponse;
 import com.stark.webbanhang.api.user.dto.response.OrderDetailResponse;
-import com.stark.webbanhang.api.user.entity.Gallery;
+import com.stark.webbanhang.api.user.dto.response.ProductResponse;
 import com.stark.webbanhang.api.user.entity.Order;
 import com.stark.webbanhang.api.user.entity.OrderDetail;
 import com.stark.webbanhang.api.user.entity.Product;
 import com.stark.webbanhang.api.user.mapper.OrderDetailMapper;
+import com.stark.webbanhang.api.user.mapper.ProductMapper;
 import com.stark.webbanhang.api.user.repository.OrderDetailRepository;
-import com.stark.webbanhang.api.user.repository.OrderRepository;
 import com.stark.webbanhang.api.user.repository.ProductRepository;
 import com.stark.webbanhang.api.user.service.OrderDetailService;
+import com.stark.webbanhang.api.user.service.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,34 +32,39 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     OrderDetailRepository orderDetailRepository;
     OrderDetailMapper orderDetailMapper;
     ProductRepository productRepository;
-    OrderRepository orderRepository;
+    ProductService productService;
 
     @Override
+    @Transactional
     public List<OrderDetailResponse> createOrderDetail(Order order, List<OrderDetailRequest> orderDetailRequests) {
-        List<OrderDetail> orderDetails = orderDetailRequests.stream().map(orderDetailRequest -> {
-            // Kiểm tra sản phẩm tồn tại
-            Product product = productRepository.findById(orderDetailRequest.getProductID())
-                    .orElseThrow(() -> new RuntimeException("Product not found with ID: " + orderDetailRequest.getProductID()));
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        for(OrderDetailRequest request : orderDetailRequests){
+            OrderDetail detail = new OrderDetail();
+            detail.setQuantity(request.getQuantity());
+            detail.setPrice(request.getPrice());
+            detail.setTotalMoney(request.getTotalMoney());
+            Product product = productRepository.findById(request.getProductID())
+                    .orElseThrow(()-> new RuntimeException("Not found Product!"));
 
-            // Tạo OrderDetail
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrder(order);
-            orderDetail.setProduct(product);
-            orderDetail.setPrice(orderDetailRequest.getPrice());
-            orderDetail.setQuantity(orderDetailRequest.getQuantity());
-            orderDetail.setTotalMoney(orderDetailRequest.getTotalMoney());
+            if (product.getQuantity() < request.getQuantity()) {
+                throw new RuntimeException("Not enough quantity for product: " + product.getName());
+            }
+            product.setQuantity(product.getQuantity() - request.getQuantity());
+            productRepository.save(product);
 
-            return orderDetail;
-        }).collect(Collectors.toList());
+            detail.setProduct(product);
+            detail.setOrder(order);
 
-        List<OrderDetail> savedOrderDetail = orderDetailRepository.saveAll(orderDetails);
+            orderDetailList.add(detail);
+        }
+        List<OrderDetail> savedOrderDetail = orderDetailRepository.saveAll(orderDetailList);
 
-        List<OrderDetailResponse> listGalleryResponse = savedOrderDetail.stream()
-                .map(orderDetailMapper::toOrderDetailResponse)
-                .collect(Collectors.toList());
+        List<OrderDetailResponse> listOrderDetailResponse = savedOrderDetail.stream()
+                .map(orderDetailMapper::toOrderDetailResponse).collect(Collectors.toList());
 
-        return listGalleryResponse;
+        return listOrderDetailResponse;
     }
+
 
     @Override
     public List<OrderDetailResponse> getAll() {
@@ -69,6 +75,35 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public void deleteOrderDetail(UUID idOrder) {
         List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(idOrder);
         orderDetailRepository.deleteAll(orderDetailList);
+    }
+
+    @Override
+    public List<OrderDetailResponse> getOrderDetailResponse(Order order) {
+        List<OrderDetailResponse> detailResponse = new ArrayList<>();
+        List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(order.getId());
+        for(OrderDetail orderDetail : orderDetailList){
+            OrderDetailResponse detail = new OrderDetailResponse();
+            detail.setOrderID(order.getId());
+            detail.setQuantity(orderDetail.getQuantity());
+            detail.setPrice(orderDetail.getPrice());
+            detail.setTotalMoney(orderDetail.getTotalMoney());
+            Product product = productRepository.findById(orderDetail.getProduct().getId())
+                    .orElseThrow(()-> new RuntimeException("Not found Product"));
+
+
+
+            ProductResponse productResponse = productService.convertToResponse(product);
+            detail.setProduct(productResponse);
+
+            detailResponse.add(detail);
+        }
+        return detailResponse;
+    }
+
+    @Override
+    public OrderDetailResponse getOrderDetailByIdOrder(UUID idOrder) {
+        List<OrderDetail> detailList = orderDetailRepository.findByOrderId(idOrder);
+        return null;
     }
 
 

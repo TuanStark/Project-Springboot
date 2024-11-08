@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,9 +17,9 @@ import java.util.UUID;
 public class OrderRequest {
      int status;
      String note;
-     LocalDate orderDate;
+     Date orderDate;
      double totalMoney;
-     int paymentMethods;// chuyển khoản hoặc trả tiền trực tiếp khi nhạn hàng
+     int paymentMethods;
      UUID userID;
      List<OrderDetailRequest> orderDetails;
 }

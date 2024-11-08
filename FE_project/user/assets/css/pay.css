@@ -11,14 +11,14 @@
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-box-flex: 1;
-    margin-top: 50px;
+    
 }
 
 .message-wrapper{
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-    margin-bottom: 10px;
+    padding-top: 5px;
     font-size: 1.1em;
+    text-align: center;
+    margin-top: 30px;
 }
 .message-container{
     color: #7a9c59;
@@ -194,4 +194,9 @@ input[type=radio] {
 }
 .btn-alt:hover{
     background-color: #a50a06;
+}
+.product-name{
+    justify-content: space-between;
+    display: flex;
+    
 }

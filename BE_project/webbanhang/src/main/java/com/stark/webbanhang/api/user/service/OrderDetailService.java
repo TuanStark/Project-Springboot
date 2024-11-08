@@ -13,4 +13,6 @@ public interface OrderDetailService {
     public List<OrderDetailResponse> createOrderDetail(Order order, List<OrderDetailRequest> requests);
     public List<OrderDetailResponse> getAll();
     public void deleteOrderDetail(UUID idOrder);
+    List<OrderDetailResponse> getOrderDetailResponse(Order order);
+    OrderDetailResponse getOrderDetailByIdOrder(UUID idOrder);
 }

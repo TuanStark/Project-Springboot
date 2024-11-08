@@ -4,7 +4,7 @@ import com.stark.webbanhang.api.user.dto.request.GalleryRequest;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import java.sql.Date;
 import java.util.List;
@@ -35,5 +35,5 @@ public class ProductResponse {
      CategoryResponse category;
      private Date createdAt;
      @NotNull
-     private List<GalleryResponse> images; // Danh sách ảnh sản phẩm
+     private List<GalleryResponse> images;
 }

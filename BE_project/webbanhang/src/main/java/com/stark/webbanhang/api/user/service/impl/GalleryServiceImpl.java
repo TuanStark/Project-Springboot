@@ -31,6 +31,7 @@ public class GalleryServiceImpl implements GalleryService {
     GalleryRepository galleryRepository;
     GalleryMapper galleryMapper;
     UploadService uploadService;
+    ProductRepository productRepository;
 
     @Override
     @Transactional
@@ -76,6 +77,7 @@ public class GalleryServiceImpl implements GalleryService {
 
                     if (isDefault) {
                         updateDefaultImage(product.getId());
+
                     }
 
                     listGallery.add(gallery);

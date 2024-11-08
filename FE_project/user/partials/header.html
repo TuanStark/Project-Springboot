@@ -1,6 +1,6 @@
 <div class="header-wrap ">
     <div class="logo">
-        <a href="index.html" class="logo-wrap">
+        <a href="/user/index.html" class="logo-wrap">
             <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2" width="157"
                 height="36">
         </a>
@@ -45,7 +45,9 @@
     <div class="header-right">
         <div class="icon-header">
             <span class=" header-icon">
-                <button class="header-icon-button js-find-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="header-icon-button js-find-button">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 24px;"></i>
+                </button>
             </span>
             <!-- User Layout -->
             <div class="header__account">
@@ -60,10 +62,10 @@
             </div>
             <!-- Cart layout -->
             <div class="header__cart">
-                <a href="cart.html" class="header__cart-link">
+                <a href="/user/cart.html" class="header__cart-link">
                     <div class="header__cart-wrap">
                         <i class="fa-solid fa-thin fa-cart-shopping"></i>
-                        <span class="count-item count-item-pr">0</span>
+                        <span class="count-item count-item-pr" id="cartCount">0</span>
 
                         <!--header__cart-list--no-cart-->
                         <!-- <div class="header__cart-list">
@@ -97,7 +99,7 @@
         <div class="modal__inner">
             <div class="header-wrap-1 ">
                 <div class="logo">
-                    <a href="index.html" class="logo-wrap">
+                    <a href="/user/index.html" class="logo-wrap">
                         <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
                             width="157" height="36">
                     </a>
@@ -131,7 +133,7 @@
                             <a href="cart.html" class="header__cart-link">
                                 <div class="header__cart-wrap">
                                     <i class="fa-solid fa-thin fa-cart-shopping"></i>
-                                    <span class="count-item count-item-pr">0</span>
+                                    <span class="count-item count-item-pr" id="cartCount">0</span>
                                     <div class="header__cart-list header__cart-list--no-cart">
                                         <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
                                     </div>
@@ -179,4 +181,6 @@
             }
         });
     </Script>
+    <script src="/user/assets/js-load-data/index.js"></script>
+    <script src="/user/assets/js-load-data/cart.js"></script>
 </div>
